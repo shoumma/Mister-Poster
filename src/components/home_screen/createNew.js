@@ -68,7 +68,7 @@ export default class CreateNew extends Component {
       const time = Date.now()
       const uid = firebaseApp.auth().currentUser.uid;
       const email = firebaseApp.auth().currentUser.email;
-      const newPostKey = firebase.database().ref().child('posts').push().key
+      const newPostKey = firebaseApp.database().ref().child('posts').push().key
 
       const postData = {
         name: firebaseApp.auth().currentUser.displayName,
@@ -80,7 +80,7 @@ export default class CreateNew extends Component {
       updates['/posts/' + newPostKey] = postData
       updates['/users/' + uid + '/posts/' + newPostKey] = postData
 
-      firebase.database().ref().update(updates).then(() => {
+      firebaseApp.database().ref().update(updates).then(() => {
         this.setState({ postStatus: 'Posted! Thank You.', postText: '' })
       }).catch(() => {
         this.setState({ postStatus: 'Something went wrong!!!' })
