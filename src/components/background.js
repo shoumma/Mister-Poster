@@ -29,7 +29,7 @@ export default class Background extends Component {
 const styles = StyleSheet.create({
   backgroundContainer : {
     position: 'absolute',
-    top: 0,
+    top: 5,
     bottom: 0,
     left: 0,
     right: 0
